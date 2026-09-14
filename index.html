@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- Color Variables (Unified Warm Theme) --- */
+        /* --- الألوان المشرقة (برتقالي حيوي وبدون بني) --- */
         :root {
-            --primary-orange: #e67e22;
-            --dark-orange: #d35400;
-            --light-orange: #fdebd0;
-            --danger-red: #e74c3c;
-            --dark-red: #c0392b;
+            --primary-orange: #ff8c00; /* برتقالي ساطع وحيوي */
+            --dark-orange: #e67e22;
+            --light-orange: #fff4e6;
+            --accent-red: #e74c3c;
+            --text-dark: #2c3e50; /* سكني غامق مريح للقراءة بدل البني */
             --white: #ffffff;
-            --text-dark: #4a2311;
             --bg-soft: #fffdfa;
         }
 
-        /* --- Global Styles --- */
+        /* --- إعدادات عامة --- */
         html { scroll-behavior: smooth; }
 
         body {
@@ -29,12 +28,12 @@
             color: var(--text-dark);
             margin: 0;
             background-color: var(--bg-soft);
-            background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="%23e67e22" fill-opacity="0.1"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="%23ff8c00" fill-opacity="0.07"/></svg>');
             overflow-x: hidden;
             text-align: right;
         }
 
-        /* Animation Class */
+        /* حركات الأنيميشن */
         .reveal {
             opacity: 0;
             transform: scale(0.95) translateY(20px);
@@ -45,9 +44,9 @@
             transform: scale(1) translateY(0);
         }
 
-        /* --- Top Bar (Hospital Name) --- */
+        /* --- الشريط العلوي للمستشفى --- */
         .top-bar {
-            background-color: var(--dark-red);
+            background-color: var(--text-dark); /* تم التغيير لسكني غامق احترافي */
             color: var(--white);
             text-align: center;
             padding: 8px 15px;
@@ -58,9 +57,9 @@
             position: relative;
             z-index: 1001;
         }
-        .top-bar i { margin-left: 8px; color: #f1c40f; }
+        .top-bar i { margin-left: 8px; color: var(--primary-orange); }
 
-        /* --- Floating Navigation --- */
+        /* --- القائمة العائمة --- */
         nav {
             background: rgba(255, 255, 255, 0.95);
             padding: 10px 20px;
@@ -68,7 +67,7 @@
             position: sticky;
             top: 10px;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(230, 126, 34, 0.15);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.15);
             width: 90%;
             max-width: 800px;
             margin: 15px auto;
@@ -79,70 +78,78 @@
         nav a { 
             color: var(--dark-orange); text-decoration: none; margin: 0 15px; 
             font-weight: 800; font-size: 1.1rem;
-            transition: all 0.3s; padding: 5px 10px; border-radius: 20px;
+            transition: all 0.3s; padding: 5px 12px; border-radius: 20px;
+            display: inline-block;
         }
         nav a:hover { background: var(--primary-orange); color: white; }
         @media (max-width: 600px) { nav a { font-size: 0.9rem; margin: 0 3px; padding: 5px; } }
 
-        /* --- Header --- */
+        /* --- الهيدر والشعارات --- */
         header {
             background: linear-gradient(135deg, var(--light-orange), #fff);
-            padding: 2rem 2rem 4rem 2rem;
+            padding: 2rem 3rem 4rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 0 0 50px 50px;
-            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.08);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.08);
             margin-bottom: 40px;
+            gap: 20px;
         }
-        .header-logo { width: 90px; height: 90px; object-fit: contain; }
-        .header-center { flex-grow: 1; text-align: center; padding: 0 15px; }
+        .header-logo { 
+            width: 130px; /* تكبير الشعار */
+            height: 130px; 
+            object-fit: contain; 
+            flex-shrink: 0; /* منع انضغاط الشعار أو قصه */
+        }
+        .header-center { flex-grow: 1; text-align: center; }
         .main-title { 
-            margin: 0; color: var(--dark-red); font-size: 2.8rem; 
+            margin: 0; color: var(--primary-orange); font-size: 2.8rem; 
             font-weight: 900; line-height: 1.2; text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
         }
         .sub-title { 
-            margin: 10px 0 0; color: var(--primary-orange); font-size: 1.4rem; font-weight: 700;
+            margin: 10px 0 0; color: var(--text-dark); font-size: 1.4rem; font-weight: 700;
         }
 
         @media (max-width: 900px) {
             header { flex-direction: column; padding: 2rem 1rem 3rem 1rem; border-radius: 0 0 30px 30px; }
-            .header-logo { margin-bottom: 15px; }
-            .logo-right { display: none; } /* Hide one logo on mobile for space */
+            .header-logo { margin-bottom: 15px; width: 100px; height: 100px; }
+            .logo-right { display: none; }
             .main-title { font-size: 2rem; }
         }
 
-        /* --- Content & Formatting --- */
+        /* --- إعدادات المحتوى والكروت --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* Playful Card Design */
         .section-card {
             background: var(--white);
             padding: 40px;
             margin-bottom: 50px;
-            border-radius: 40px 10px 40px 10px; /* Playful asymmetric borders */
-            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.08);
+            border-radius: 40px 10px 40px 10px;
+            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.08);
             border: 3px solid var(--light-orange);
-            position: relative;
         }
         @media (max-width: 600px) { .section-card { padding: 25px; border-radius: 25px; } }
 
+        /* --- حل مشكلة محاذاة العناوين --- */
         h2 { 
-            color: var(--dark-red); font-weight: 900; font-size: 2.2rem;
+            color: var(--primary-orange); font-weight: 900; font-size: 2.2rem;
             text-align: center; margin-top: 0; margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
+        /* الخط البرتقالي التزييني تحت العنوان */
         h2::after {
-            content: ""; position: absolute; width: 60%; height: 4px;
-            background: var(--primary-orange); bottom: -10px; left: 20%; border-radius: 10px;
+            content: ""; 
+            display: block; 
+            width: 80px; 
+            height: 4px;
+            background: var(--primary-orange); 
+            margin: 10px auto 0 auto; 
+            border-radius: 10px;
         }
         
-        p { margin-bottom: 20px; font-size: 1.2rem; }
+        p { margin-bottom: 20px; font-size: 1.2rem; text-align: right; }
 
-        /* --- Pillars (Circular Badges) --- */
+        /* --- الأركان الأربعة --- */
         .pillars-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
         .pillar-card { 
             background: var(--white); width: 160px; height: 160px; 
@@ -153,49 +160,51 @@
             transition: transform 0.3s;
         }
         .pillar-card:hover { transform: scale(1.05) rotate(3deg); background: var(--light-orange); border-style: solid; }
-        .pillar-icon { font-size: 3rem; color: var(--dark-red); margin-bottom: 10px; }
-        .pillar-card h4 { margin: 0; font-size: 1.2rem; font-weight: 800; }
+        .pillar-icon { font-size: 3rem; color: var(--primary-orange); margin-bottom: 10px; }
+        .pillar-card h4 { margin: 0; font-size: 1.2rem; font-weight: 800; color: var(--text-dark); }
 
-        /* --- Emergency Grid (Custom Icons instead of squares) --- */
+        /* --- قسم الطوارئ --- */
         .emergency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
         
         .emergency-box { 
             padding: 30px; border-radius: 25px; color: white; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .box-high { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        .box-low { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .box-high { background: linear-gradient(135deg, #e74c3c, #c0392b); } /* أحمر للارتفاع */
+        .box-low { background: linear-gradient(135deg, #f39c12, #e67e22); } /* برتقالي للهبوط */
         
         .emergency-box h3 { 
             border-bottom: 2px dashed rgba(255,255,255,0.4); 
             padding-bottom: 15px; font-size: 1.6rem; margin-top: 0; text-align: center;
+            color: white;
         }
+        .emergency-box h3::after { display: none; } /* إخفاء الخط الإضافي هنا */
         
-        /* The New Icon Lists for Tables */
-        .icon-list { list-style: none; padding: 0; margin: 0; }
+        /* شكل القوائم */
+        .icon-list { list-style: none; padding: 0; margin: 0; text-align: right; }
         .icon-list li { 
             display: flex; align-items: flex-start; gap: 12px; 
             margin-bottom: 15px; font-weight: 600; font-size: 1.15rem; 
         }
-        .icon-list li i { margin-top: 6px; font-size: 1.1rem; color: #fff; opacity: 0.9; }
+        .icon-list li i { margin-top: 6px; font-size: 1.1rem; opacity: 0.9; }
 
         @media (max-width: 768px) { .emergency-grid { grid-template-columns: 1fr; } }
 
-        /* --- Two Columns Layout --- */
+        /* --- التنسيق بعمودين --- */
         .two-col { display: flex; gap: 30px; align-items: center; }
         .two-col img { width: 100%; max-width: 280px; object-fit: contain; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); }
-        .two-col-content { flex-grow: 1; }
-        @media (max-width: 768px) { .two-col { flex-direction: column; text-align: center; } }
+        .two-col-content { flex-grow: 1; text-align: right; }
+        @media (max-width: 768px) { .two-col { flex-direction: column; text-align: center; } .two-col-content { text-align: center; } .icon-list { text-align: center; } }
 
-        /* --- Notice Cards --- */
+        /* --- كروت الملاحظات الدائرية --- */
         .notice-card {
             background: var(--light-orange); padding: 20px; border-radius: 20px;
-            border-right: 6px solid var(--dark-orange); margin-bottom: 15px;
+            border-right: 6px solid var(--primary-orange); margin-bottom: 15px; text-align: right;
         }
-        .notice-card h4 { color: var(--dark-red); margin-top: 0; margin-bottom: 5px; font-size: 1.3rem; }
+        .notice-card h4 { color: var(--text-dark); margin-top: 0; margin-bottom: 5px; font-size: 1.3rem; font-weight: 800; }
         .notice-card p { margin: 0; font-size: 1.1rem; }
 
-        /* --- Footer --- */
+        /* --- الفوتر --- */
         footer { 
             background: var(--text-dark); color: white; text-align: center; 
             padding: 30px; font-size: 1.1rem; margin-top: 40px; 
@@ -205,12 +214,12 @@
 </head>
 <body>
 
-    <!-- Hospital Name at the very top -->
+    <!-- الشريط العلوي للمستشفى -->
     <div class="top-bar">
         <i class="fas fa-hospital"></i> مستشفى النسائية والأطفال المفرق - قسم التمريض / شعبة ICU
     </div>
 
-    <!-- Floating Navigation -->
+    <!-- القائمة العائمة -->
     <nav>
         <a href="#definition">ما هو السكري؟</a>
         <a href="#pillars">أركان الرعاية</a>
@@ -218,6 +227,7 @@
         <a href="#psychological">المدرسة والدعم</a>
     </nav>
 
+    <!-- الهيدر والشعارات -->
     <header>
         <img src="moh-logo.png" alt="وزارة الصحة" class="header-logo logo-left">
         <div class="header-center">
@@ -229,7 +239,7 @@
 
     <div class="container">
         
-        <!-- Section 1: Definition & Signs -->
+        <!-- ما هو السكري -->
         <div id="definition" class="section-card reveal two-col">
             <div class="two-col-content">
                 <h2>ما هو السكري؟</h2>
@@ -238,25 +248,25 @@
                     في سكري الأطفال (النوع الأول)، يتوقف البنكرياس عن إنتاج الإنسولين، مما يؤدي لتراكم السكر في الدم.
                 </p>
                 
-                <h3 style="color: var(--dark-red); margin-top: 30px; text-align: center;"><i class="fas fa-search"></i> كيف نكتشفه؟ (علامات تنبيهية)</h3>
+                <h3 style="color: var(--accent-red); margin-top: 30px; text-align: center;"><i class="fas fa-search"></i> كيف نكتشفه؟ (علامات تنبيهية)</h3>
                 
                 <div class="notice-card">
-                    <h4><i class="fas fa-weight"></i> فقدان الوزن</h4>
+                    <h4><i class="fas fa-weight" style="color: var(--primary-orange);"></i> فقدان الوزن</h4>
                     <p>فقدان غير مبرر وسريع لوزن الطفل رغم تناوله للطعام.</p>
                 </div>
                 <div class="notice-card">
-                    <h4><i class="fas fa-tint"></i> العطش الشديد</h4>
+                    <h4><i class="fas fa-tint" style="color: var(--primary-orange);"></i> العطش الشديد</h4>
                     <p>طلب الماء بكثرة وبشكل ملحوظ غير معتاد.</p>
                 </div>
                 <div class="notice-card">
-                    <h4><i class="fas fa-restroom"></i> التبول المتكرر</h4>
+                    <h4><i class="fas fa-restroom" style="color: var(--primary-orange);"></i> التبول المتكرر</h4>
                     <p>الذهاب للحمام بكثرة، وقد يصاحبه تبول لا إرادي ليلاً.</p>
                 </div>
             </div>
             <img src="happy-boy.png" alt="طفل نشيط">
         </div>
 
-        <!-- Section 2: Four Pillars -->
+        <!-- الأركان الأربعة -->
         <div id="pillars" class="section-card reveal">
             <h2>أركان الرعاية الأربعة</h2>
             <div class="pillars-grid">
@@ -279,40 +289,40 @@
             </div>
         </div>
 
-        <!-- Section 3: Emergency (With New Shapes Instead of Squares) -->
+        <!-- قسم الطوارئ -->
         <div id="emergency" class="section-card reveal">
             <h2>دليل الطوارئ السريع</h2>
             <div class="emergency-grid">
                 
-                <!-- High Sugar -->
+                <!-- الارتفاع -->
                 <div class="emergency-box box-high">
                     <h3><i class="fas fa-arrow-up"></i> ارتفاع السكر (فوق 250)</h3>
-                    <ul class="icon-list">
-                        <li><i class="fas fa-star"></i> افحص الكيتونات.</li>
-                        <li><i class="fas fa-star"></i> الشرب الكثير من الماء.</li>
-                        <li><i class="fas fa-star"></i> أخذ جرعة إنسولين تصحيحية.</li>
-                        <li><i class="fas fa-star"></i> تجنب الرياضة والنشاط الشاق.</li>
-                        <li><i class="fas fa-phone-alt"></i> اتصل بالطبيب إذا استمر الارتفاع.</li>
+                    <ul class="icon-list" style="color: white;">
+                        <li><i class="fas fa-star" style="color: #fff;"></i> افحص الكيتونات.</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> الشرب الكثير من الماء.</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> أخذ جرعة إنسولين تصحيحية.</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> تجنب الرياضة والنشاط الشاق.</li>
+                        <li><i class="fas fa-phone-alt" style="color: #fff;"></i> اتصل بالطبيب إذا استمر الارتفاع.</li>
                     </ul>
                 </div>
                 
-                <!-- Low Sugar -->
+                <!-- الهبوط -->
                 <div class="emergency-box box-low">
                     <h3><i class="fas fa-arrow-down"></i> هبوط السكر (تحت 70)</h3>
-                    <ul class="icon-list">
-                        <li><i class="fas fa-check-circle"></i> توقف عن النشاط فوراً.</li>
-                        <li><i class="fas fa-check-circle"></i> تناول 15 غرام كربوهيدرات سريعة (مثل العصير).</li>
-                        <li><i class="fas fa-check-circle"></i> انتظر 15 دقيقة وأعد الفحص.</li>
-                        <li><i class="fas fa-check-circle"></i> كرر الخطوات إذا لزم الأمر.</li>
-                        <li><i class="fas fa-check-circle"></i> تناول وجبة خفيفة بعد التحسن.</li>
-                        <li><i class="fas fa-ambulance"></i> اتصل بالطوارئ في الحالات الشديدة.</li>
+                    <ul class="icon-list" style="color: white;">
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> توقف عن النشاط فوراً.</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول 15 غرام كربوهيدرات سريعة (مثل العصير).</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> انتظر 15 دقيقة وأعد الفحص.</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> كرر الخطوات إذا لزم الأمر.</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول وجبة خفيفة بعد التحسن.</li>
+                        <li><i class="fas fa-ambulance" style="color: #fff;"></i> اتصل بالطوارئ في الحالات الشديدة.</li>
                     </ul>
                 </div>
             </div>
             
             <div class="two-col" style="margin-top: 40px; background: var(--bg-soft); padding: 30px; border-radius: 25px; border: 2px dashed var(--primary-orange);">
                 <div class="two-col-content">
-                    <h3 style="color: var(--dark-red); margin-top: 0;"><i class="fas fa-medkit"></i> قائمة حقيبة طوارئ الطفل</h3>
+                    <h3 style="color: var(--primary-orange); margin-top: 0; text-align: right;"><i class="fas fa-medkit"></i> قائمة حقيبة طوارئ الطفل</h3>
                     <p>أشياء يجب أن يحملها الطفل دائماً عند الخروج من المنزل:</p>
                     <ul class="icon-list" style="color: var(--text-dark);">
                         <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> جهاز قياس السكر وشرائط الفحص.</li>
@@ -326,13 +336,13 @@
             </div>
         </div>
 
-        <!-- Section 4: Psych & School -->
+        <!-- الدعم النفسي والمدرسة -->
         <div id="psychological" class="section-card reveal">
             <h2>الدعم النفسي والبيئة المدرسية</h2>
             
             <div class="two-col" style="margin-bottom: 40px;">
                 <div class="two-col-content">
-                    <h3 style="color: var(--dark-orange);"><i class="fas fa-heart"></i> الدعم النفسي للطفل</h3>
+                    <h3 style="color: var(--primary-orange); text-align: right;"><i class="fas fa-heart"></i> الدعم النفسي للطفل</h3>
                     <div class="notice-card">
                         <h4>تجنب اللوم</h4>
                         <p>تذبذب القراءات ليس ذنب الطفل؛ ابحث عن السبب وعالجه بهدوء وتفهم.</p>
@@ -349,11 +359,11 @@
             </div>
 
             <div class="two-col-content" style="background: var(--light-orange); padding: 30px; border-radius: 25px;">
-                <h3 style="color: var(--dark-red); margin-top: 0; text-align: center;"><i class="fas fa-school"></i> السكري والمدرسة</h3>
+                <h3 style="color: var(--primary-orange); margin-top: 0; text-align: center;"><i class="fas fa-school"></i> السكري والمدرسة</h3>
                 <ul class="icon-list" style="color: var(--text-dark);">
-                    <li><i class="fas fa-check" style="color: var(--dark-red);"></i> <strong>التواصل الفعال:</strong> أبلغ الإدارة والمعلمين بحالة الطفل واشرح لهم أعراض الهبوط بوضوح.</li>
-                    <li><i class="fas fa-check" style="color: var(--dark-red);"></i> <strong>حقوق أساسية:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت بالصف.</li>
-                    <li><i class="fas fa-check" style="color: var(--dark-red);"></i> <strong>صندوق الطوارئ:</strong> جهّز علبة تُترك في الإدارة أو مع المعلم تحتوي على عصير، سكر سريع، وجهاز فحص إضافي.</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>التواصل الفعال:</strong> أبلغ الإدارة والمعلمين بحالة الطفل واشرح لهم أعراض الهبوط بوضوح.</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>حقوق أساسية:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت بالصف.</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>صندوق الطوارئ:</strong> جهّز علبة تُترك في الإدارة أو مع المعلم تحتوي على عصير، سكر سريع، وجهاز فحص إضافي.</li>
                 </ul>
             </div>
         </div>
