@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- الألوان المشرقة (برتقالي حيوي وبدون بني) --- */
+        /* --- الألوان المشرقة (برتقالي حيوي) --- */
         :root {
-            --primary-orange: #ff8c00; /* برتقالي ساطع وحيوي */
+            --primary-orange: #ff8c00; 
             --dark-orange: #e67e22;
             --light-orange: #fff4e6;
             --accent-red: #e74c3c;
-            --text-dark: #2c3e50; /* سكني غامق مريح للقراءة بدل البني */
+            --text-dark: #2c3e50; 
             --white: #ffffff;
             --bg-soft: #fffdfa;
         }
@@ -46,7 +46,7 @@
 
         /* --- الشريط العلوي للمستشفى --- */
         .top-bar {
-            background-color: var(--text-dark); /* تم التغيير لسكني غامق احترافي */
+            background-color: var(--text-dark);
             color: var(--white);
             text-align: center;
             padding: 8px 15px;
@@ -97,10 +97,10 @@
             gap: 20px;
         }
         .header-logo { 
-            width: 130px; /* تكبير الشعار */
+            width: 130px; 
             height: 130px; 
             object-fit: contain; 
-            flex-shrink: 0; /* منع انضغاط الشعار أو قصه */
+            flex-shrink: 0;
         }
         .header-center { flex-grow: 1; text-align: center; }
         .main-title { 
@@ -108,14 +108,15 @@
             font-weight: 900; line-height: 1.2; text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
         }
         .sub-title { 
-            margin: 10px 0 0; color: var(--text-dark); font-size: 1.4rem; font-weight: 700;
+            margin: 15px 0 5px 0; color: var(--text-dark); font-size: 1.4rem; font-weight: 700; display: block;
         }
 
         @media (max-width: 900px) {
             header { flex-direction: column; padding: 2rem 1rem 3rem 1rem; border-radius: 0 0 30px 30px; }
             .header-logo { margin-bottom: 15px; width: 100px; height: 100px; }
             .logo-right { display: none; }
-            .main-title { font-size: 2rem; }
+            .main-title { font-size: 2.2rem; }
+            .sub-title { font-size: 1.2rem; }
         }
 
         /* --- إعدادات المحتوى والكروت --- */
@@ -131,12 +132,11 @@
         }
         @media (max-width: 600px) { .section-card { padding: 25px; border-radius: 25px; } }
 
-        /* --- حل مشكلة محاذاة العناوين --- */
+        /* --- محاذاة العناوين بالمنتصف --- */
         h2 { 
             color: var(--primary-orange); font-weight: 900; font-size: 2.2rem;
             text-align: center; margin-top: 0; margin-bottom: 30px;
         }
-        /* الخط البرتقالي التزييني تحت العنوان */
         h2::after {
             content: ""; 
             display: block; 
@@ -170,15 +170,16 @@
             padding: 30px; border-radius: 25px; color: white; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .box-high { background: linear-gradient(135deg, #e74c3c, #c0392b); } /* أحمر للارتفاع */
-        .box-low { background: linear-gradient(135deg, #f39c12, #e67e22); } /* برتقالي للهبوط */
+        .box-high { background: linear-gradient(135deg, #e74c3c, #c0392b); } 
+        .box-low { background: linear-gradient(135deg, #f39c12, #e67e22); } 
         
         .emergency-box h3 { 
             border-bottom: 2px dashed rgba(255,255,255,0.4); 
-            padding-bottom: 15px; font-size: 1.6rem; margin-top: 0; text-align: center;
-            color: white;
+            padding-bottom: 15px; font-size: 1.4rem; margin-top: 0; text-align: center;
+            color: white; direction: ltr; /* للحفاظ على الأرقام صحيحة */
         }
-        .emergency-box h3::after { display: none; } /* إخفاء الخط الإضافي هنا */
+        .emergency-box h3 span { direction: rtl; display: inline-block; }
+        .emergency-box h3::after { display: none; } 
         
         /* شكل القوائم */
         .icon-list { list-style: none; padding: 0; margin: 0; text-align: right; }
@@ -196,13 +197,19 @@
         .two-col-content { flex-grow: 1; text-align: right; }
         @media (max-width: 768px) { .two-col { flex-direction: column; text-align: center; } .two-col-content { text-align: center; } .icon-list { text-align: center; } }
 
-        /* --- كروت الملاحظات الدائرية --- */
+        /* --- كروت الملاحظات والعلامات التنبيهية --- */
         .notice-card {
+            background: var(--light-orange); padding: 15px 20px; border-radius: 15px;
+            border-right: 6px solid var(--primary-orange); margin-bottom: 15px; text-align: right;
+        }
+        .notice-card h4 { color: var(--text-dark); margin: 0; font-size: 1.3rem; font-weight: 800; }
+        
+        .psych-card {
             background: var(--light-orange); padding: 20px; border-radius: 20px;
             border-right: 6px solid var(--primary-orange); margin-bottom: 15px; text-align: right;
         }
-        .notice-card h4 { color: var(--text-dark); margin-top: 0; margin-bottom: 5px; font-size: 1.3rem; font-weight: 800; }
-        .notice-card p { margin: 0; font-size: 1.1rem; }
+        .psych-card h4 { color: var(--text-dark); margin-top: 0; margin-bottom: 5px; font-size: 1.2rem; font-weight: 800; }
+        .psych-card p { margin: 0; font-size: 1.1rem; }
 
         /* --- الفوتر --- */
         footer { 
@@ -232,7 +239,8 @@
         <img src="moh-logo.png" alt="وزارة الصحة" class="header-logo logo-left">
         <div class="header-center">
             <h1 class="main-title">دليلكم المبسط لفهم سكري الأطفال</h1>
-            <h2 class="sub-title">خطوتكم الأولى نحو رعاية آمنة وحياة طبيعية.. لأن وعيكم هو أمانهم</h2>
+            <span class="sub-title">خطوتكم الأولى نحو رعاية آمنة وحياة طبيعية</span>
+            <span class="sub-title" style="color: var(--primary-orange);">لأن وعيكم هو أمانهم</span>
         </div>
         <img src="cover-kids.png" alt="أطفال السكري" class="header-logo logo-right">
     </header>
@@ -242,25 +250,22 @@
         <!-- ما هو السكري -->
         <div id="definition" class="section-card reveal two-col">
             <div class="two-col-content">
-                <h2>ما هو السكري؟</h2>
+                <h2>ما هو السكري؟ وكيف نكتشفه؟</h2>
                 <p>
                     يحتاج الجسم إلى السكر للطاقة، والإنسولين هو "المفتاح" الذي يُدخل السكر للخلايا. 
                     في سكري الأطفال (النوع الأول)، يتوقف البنكرياس عن إنتاج الإنسولين، مما يؤدي لتراكم السكر في الدم.
                 </p>
                 
-                <h3 style="color: var(--accent-red); margin-top: 30px; text-align: center;"><i class="fas fa-search"></i> كيف نكتشفه؟ (علامات تنبيهية)</h3>
+                <h3 style="color: var(--accent-red); margin-top: 30px; text-align: center;"><i class="fas fa-search"></i> علامات تنبيهية</h3>
                 
                 <div class="notice-card">
-                    <h4><i class="fas fa-weight" style="color: var(--primary-orange);"></i> فقدان الوزن</h4>
-                    <p>فقدان غير مبرر وسريع لوزن الطفل رغم تناوله للطعام.</p>
+                    <h4><i class="fas fa-weight" style="color: var(--primary-orange); margin-left: 10px;"></i> فقدان غير مبرر للوزن</h4>
                 </div>
                 <div class="notice-card">
-                    <h4><i class="fas fa-tint" style="color: var(--primary-orange);"></i> العطش الشديد</h4>
-                    <p>طلب الماء بكثرة وبشكل ملحوظ غير معتاد.</p>
+                    <h4><i class="fas fa-tint" style="color: var(--primary-orange); margin-left: 10px;"></i> العطش الشديد</h4>
                 </div>
                 <div class="notice-card">
-                    <h4><i class="fas fa-restroom" style="color: var(--primary-orange);"></i> التبول المتكرر</h4>
-                    <p>الذهاب للحمام بكثرة، وقد يصاحبه تبول لا إرادي ليلاً.</p>
+                    <h4><i class="fas fa-restroom" style="color: var(--primary-orange); margin-left: 10px;"></i> التبول المتكرر</h4>
                 </div>
             </div>
             <img src="happy-boy.png" alt="طفل نشيط">
@@ -296,26 +301,26 @@
                 
                 <!-- الارتفاع -->
                 <div class="emergency-box box-high">
-                    <h3><i class="fas fa-arrow-up"></i> ارتفاع السكر (فوق 250)</h3>
+                    <h3><i class="fas fa-arrow-up"></i> <span>ارتفاع السكر > 250 ملغ/ديسيلتر</span></h3>
                     <ul class="icon-list" style="color: white;">
-                        <li><i class="fas fa-star" style="color: #fff;"></i> افحص الكيتونات.</li>
-                        <li><i class="fas fa-star" style="color: #fff;"></i> الشرب الكثير من الماء.</li>
-                        <li><i class="fas fa-star" style="color: #fff;"></i> أخذ جرعة إنسولين تصحيحية.</li>
-                        <li><i class="fas fa-star" style="color: #fff;"></i> تجنب الرياضة والنشاط الشاق.</li>
-                        <li><i class="fas fa-phone-alt" style="color: #fff;"></i> اتصل بالطبيب إذا استمر الارتفاع.</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> افحص الكيتونات</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> الشرب الكثير من الماء</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> أخذ جرعة إنسولين تصحيحية</li>
+                        <li><i class="fas fa-star" style="color: #fff;"></i> تجنب الرياضة والنشاط الشاق</li>
+                        <li><i class="fas fa-phone-alt" style="color: #fff;"></i> اتصل بالطبيب إذا استمر الارتفاع</li>
                     </ul>
                 </div>
                 
                 <!-- الهبوط -->
                 <div class="emergency-box box-low">
-                    <h3><i class="fas fa-arrow-down"></i> هبوط السكر (تحت 70)</h3>
+                    <h3><i class="fas fa-arrow-down"></i> <span>هبوط السكر < 70 ملغ/ديسيلتر</span></h3>
                     <ul class="icon-list" style="color: white;">
-                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> توقف عن النشاط فوراً.</li>
-                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول 15 غرام كربوهيدرات سريعة (مثل العصير).</li>
-                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> انتظر 15 دقيقة وأعد الفحص.</li>
-                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> كرر الخطوات إذا لزم الأمر.</li>
-                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول وجبة خفيفة بعد التحسن.</li>
-                        <li><i class="fas fa-ambulance" style="color: #fff;"></i> اتصل بالطوارئ في الحالات الشديدة.</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> توقف عن النشاط</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول 15 غرام كربوهيدرات سريعة</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> انتظر 15 دقيقة وأعد الفحص</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> كرر الخطوات إذا لزم الأمر</li>
+                        <li><i class="fas fa-check-circle" style="color: #fff;"></i> تناول وجبة خفيفة بعد التحسن</li>
+                        <li><i class="fas fa-ambulance" style="color: #fff;"></i> اتصل بالطوارئ في الحالات الشديدة</li>
                     </ul>
                 </div>
             </div>
@@ -323,13 +328,13 @@
             <div class="two-col" style="margin-top: 40px; background: var(--bg-soft); padding: 30px; border-radius: 25px; border: 2px dashed var(--primary-orange);">
                 <div class="two-col-content">
                     <h3 style="color: var(--primary-orange); margin-top: 0; text-align: right;"><i class="fas fa-medkit"></i> قائمة حقيبة طوارئ الطفل</h3>
-                    <p>أشياء يجب أن يحملها الطفل دائماً عند الخروج من المنزل:</p>
+                    <p>قائمة لما يجب أن يحمله الطفل دائماً عند الخروج:</p>
                     <ul class="icon-list" style="color: var(--text-dark);">
                         <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> جهاز قياس السكر وشرائط الفحص.</li>
                         <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> مصدر سكر سريع (عصير أو مكعبات سكر).</li>
                         <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> قلم الإنسولين والإبر.</li>
                         <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> وجبة خفيفة (بسكويت أو فاكهة).</li>
-                        <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> بطاقة هوية طبية (توضح حالة السكري ورقم ولي الأمر).</li>
+                        <li><i class="fas fa-caret-left" style="color: var(--primary-orange);"></i> بطاقة هوية طبية (توضح أنه مصاب بالسكري وتضم رقم ولي الأمر).</li>
                     </ul>
                 </div>
                 <img src="standing-boy.png" alt="حقيبة الطفل">
@@ -338,22 +343,27 @@
 
         <!-- الدعم النفسي والمدرسة -->
         <div id="psychological" class="section-card reveal">
-            <h2>الدعم النفسي والبيئة المدرسية</h2>
+            <h2>الدعم النفسي والمدرسة</h2>
             
             <div class="two-col" style="margin-bottom: 40px;">
                 <div class="two-col-content">
                     <h3 style="color: var(--primary-orange); text-align: right;"><i class="fas fa-heart"></i> الدعم النفسي للطفل</h3>
-                    <div class="notice-card">
-                        <h4>تجنب اللوم</h4>
-                        <p>تذبذب القراءات ليس ذنب الطفل؛ ابحث عن السبب وعالجه بهدوء وتفهم.</p>
+                    <div class="psych-card">
+                        <h4>تجنب اللوم:</h4>
+                        <p>تذبذب القراءات ليس ذنب الطفل؛ ابحث عن السبب وعالجه بهدوء.</p>
                     </div>
-                    <div class="notice-card">
-                        <h4>لا للقيود</h4>
-                        <p>ذكّره دائماً بقدرته على اللعب، ممارسة الرياضة، والتفوق كغيره من الأطفال.</p>
+                    <div class="psych-card">
+                        <h4>لا للقيود:</h4>
+                        <p>ذكّره دائماً بقدرته على اللعب، الرياضة، والتفوق كغيره من الأطفال.</p>
                     </div>
-                    <div class="notice-card">
-                        <h4>تعزيز الاستقلالية</h4>
-                        <p>درّبه تدريجياً على فحص السكر بنفسه لبناء ثقته وتقليل خوفه، وعلمه الرد بثقة على أسئلة أصدقائه.</p>
+                    <div class="psych-card">
+                        <h4>تعزيز الاستقلالية:</h4>
+                        <p>درّبه تدريجياً على فحص السكر بنفسه لبناء ثقته وتقليل خوفه.</p>
+                    </div>
+                    <!-- النقطة التي كانت مفقودة تمت إضافتها هنا -->
+                    <div class="psych-card">
+                        <h4>التعامل مع الأصدقاء:</h4>
+                        <p>علّمه الإجابة ببساطة وثقة عن أي أسئلة تخص جهازه.</p>
                     </div>
                 </div>
             </div>
@@ -362,7 +372,7 @@
                 <h3 style="color: var(--primary-orange); margin-top: 0; text-align: center;"><i class="fas fa-school"></i> السكري والمدرسة</h3>
                 <ul class="icon-list" style="color: var(--text-dark);">
                     <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>التواصل الفعال:</strong> أبلغ الإدارة والمعلمين بحالة الطفل واشرح لهم أعراض الهبوط بوضوح.</li>
-                    <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>حقوق أساسية:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت بالصف.</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>حقوق أساسية في الصف:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت.</li>
                     <li><i class="fas fa-check" style="color: var(--primary-orange);"></i> <strong>صندوق الطوارئ:</strong> جهّز علبة تُترك في الإدارة أو مع المعلم تحتوي على عصير، سكر سريع، وجهاز فحص إضافي.</li>
                 </ul>
             </div>
@@ -371,7 +381,7 @@
     </div>
 
     <footer>
-        <p style="margin: 0;">مع تمنياتنا لكم ولأطفالكم بدوام الصحة والعافية</p>
+        <p style="margin: 0;">مع تمنياتنا لكم ولاطفالكم بدوام الصحة والعافية</p>
         <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">إعداد طلبة الماجستير: محمد القرعان، سيف الدين غانم، حذيفة المشاقبة | إشراف: أ.د. لؤي طوالبة</p>
     </footer>
 
