@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل سكري الأطفال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- Color Variables --- */
+        :root {
+            --primary-orange: #e67e22;
+            --secondary-blue: #3498db;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --danger-red: #e74c3c;
+            --warning-yellow: #f1c40f;
+            --bg-soft: #fff9f2;
+        }
+
+        /* --- Global Styles --- */
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin: 0;
+            background-color: var(--bg-soft);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(230, 126, 34, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            text-align: right;
+        }
+
+        /* Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 5px solid var(--primary-orange);
+            display: grid;
+            grid-template-columns: 120px 1fr 120px;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .header-logo { width: 100px; height: 100px; object-fit: contain; }
+        .header-center { padding: 0 10px; }
+        .main-title { 
+            margin: 0; color: var(--primary-orange); font-size: 2.8rem; 
+            font-weight: 900; line-height: 1.2;
+        }
+        .sub-title { 
+            margin: 10px 0 0; color: var(--secondary-blue); font-size: 1.4rem; font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            header { grid-template-columns: 1fr; padding: 1.5rem; }
+            .logo-left, .logo-right { display: none; } /* إخفاء الصور الجانبية في الجوال للترتيب */
+            .main-title { font-size: 2rem; }
+            .sub-title { font-size: 1.1rem; }
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: var(--primary-orange);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        nav a { 
+            color: white; text-decoration: none; margin: 0 15px; 
+            font-weight: 700; font-size: 1.1rem;
+            transition: color 0.3s; display: inline-block;
+        }
+        nav a:hover { color: #ffeaa7; text-decoration: underline; }
+        @media (max-width: 600px) { nav a { font-size: 0.95rem; margin: 5px 8px; } }
+
+        /* --- Content & Formatting --- */
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+
+        .section-card {
+            background: var(--white);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            border: 1px solid #fdfdfd;
+        }
+        @media (max-width: 600px) { .section-card { padding: 25px; margin-bottom: 30px; } }
+
+        h2 { 
+            color: var(--primary-orange); font-weight: 900; font-size: 2.2rem;
+            border-bottom: 3px dashed #fceade; padding-bottom: 15px; margin-top: 0; margin-bottom: 25px;
+        }
+        
+        p { margin-bottom: 20px; font-size: 1.2rem; }
+        ul { padding-right: 25px; font-size: 1.1rem; color: #444; }
+        li { margin-bottom: 12px; }
+
+        /* --- Grid for Pillars --- */
+        .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 30px; }
+        .pillar-card { background: #f8f9fa; padding: 20px; border-radius: 12px; border-bottom: 4px solid var(--secondary-blue); transition: transform 0.3s; }
+        .pillar-card:hover { transform: translateY(-5px); }
+        .pillar-icon { font-size: 3rem; color: var(--secondary-blue); margin-bottom: 15px; }
+        .pillar-card h4 { margin: 0; font-size: 1.3rem; color: var(--text-dark); }
+        @media (max-width: 800px) { .pillars-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        /* --- Emergency Grid --- */
+        .emergency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .emergency-box { padding: 30px; border-radius: 12px; color: white; }
+        .box-high { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .box-low { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .emergency-box h3 { border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; font-size: 1.5rem; margin-top: 0; }
+        .emergency-box ul { padding-right: 20px; color: white; }
+        .emergency-box li { margin-bottom: 15px; font-weight: 500; }
+        @media (max-width: 768px) { .emergency-grid { grid-template-columns: 1fr; } }
+
+        /* --- Two Columns Layout --- */
+        .two-col { display: flex; gap: 40px; align-items: center; }
+        .two-col img { width: 100%; max-width: 300px; object-fit: contain; }
+        .two-col-content { flex-grow: 1; }
+        @media (max-width: 768px) { .two-col { flex-direction: column; text-align: center; } .two-col ul { text-align: right; } }
+
+        /* --- Custom Lists --- */
+        .custom-list { list-style: none; padding-right: 0; }
+        .custom-list li { background: #f4f6f7; margin-bottom: 15px; padding: 15px; border-radius: 8px; border-right: 5px solid var(--primary-orange); display: flex; flex-direction: column; }
+        .custom-list li strong { color: var(--primary-orange); font-size: 1.2rem; margin-bottom: 5px; }
+
+        footer { background: var(--secondary-blue); color: white; text-align: center; padding: 25px; font-size: 1rem; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="moh-logo.png" alt="وزارة الصحة" class="header-logo logo-left">
+        <div class="header-center">
+            <h1 class="main-title">دليلكم المبسط لفهم سكري الأطفال</h1>
+            <h2 class="sub-title">خطوتكم الأولى نحو رعاية آمنة وحياة طبيعية.. لأن وعيكم هو أمانهم</h2>
+        </div>
+        <img src="cover-kids.png" alt="أطفال السكري" class="header-logo logo-right">
+    </header>
+
+    <nav>
+        <a href="#definition">ما هو السكري؟</a>
+        <a href="#pillars">أركان الرعاية</a>
+        <a href="#emergency">دليل الطوارئ</a>
+        <a href="#psychological">الدعم والمدرسة</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Section 1: Definition & Signs -->
+        <div id="definition" class="section-card reveal two-col">
+            <div class="two-col-content">
+                <h2>ما هو السكري؟ وكيف نكتشفه؟</h2>
+                <p>
+                    يحتاج الجسم إلى السكر للطاقة، والإنسولين هو "المفتاح" الذي يُدخل السكر للخلايا. 
+                    في سكري الأطفال (النوع الأول)، يتوقف البنكرياس عن إنتاج الإنسولين، مما يؤدي لتراكم السكر في الدم.
+                </p>
+                <h3 style="color: var(--danger-red); margin-top: 30px;"><i class="fas fa-exclamation-triangle"></i> علامات تنبيهية</h3>
+                <ul class="custom-list">
+                    <li style="border-right-color: var(--danger-red);">
+                        <strong><i class="fas fa-weight"></i> فقدان غير مبرر للوزن</strong>
+                    </li>
+                    <li style="border-right-color: var(--danger-red);">
+                        <strong><i class="fas fa-tint"></i> العطش الشديد</strong>
+                    </li>
+                    <li style="border-right-color: var(--danger-red);">
+                        <strong><i class="fas fa-restroom"></i> التبول المتكرر</strong>
+                    </li>
+                </ul>
+            </div>
+            <img src="happy-boy.png" alt="طفل نشيط">
+        </div>
+
+        <!-- Section 2: Four Pillars -->
+        <div id="pillars" class="section-card reveal">
+            <h2 style="text-align: center;">أركان الرعاية الأربعة</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <i class="fas fa-syringe pillar-icon"></i>
+                    <h4>حقن الأنسولين</h4>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-tint pillar-icon" style="color: #e74c3c;"></i>
+                    <h4>قياس السكر</h4>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-apple-alt pillar-icon" style="color: #2ecc71;"></i>
+                    <h4>الغذاء المتوازن</h4>
+                </div>
+                <div class="pillar-card">
+                    <i class="fas fa-running pillar-icon" style="color: #f39c12;"></i>
+                    <h4>النشاط البدني</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Emergency -->
+        <div id="emergency" class="section-card reveal">
+            <h2 style="text-align: center;">دليل الطوارئ السريع</h2>
+            <div class="emergency-grid">
+                <!-- High Sugar -->
+                <div class="emergency-box box-high">
+                    <h3><i class="fas fa-arrow-up"></i> ارتفاع السكر > 250 ملغ/ديسيلتر</h3>
+                    <ul style="list-style-type: square;">
+                        <li>افحص الكيتونات.</li>
+                        <li>الشرب الكثير من الماء.</li>
+                        <li>أخذ جرعة إنسولين تصحيحية.</li>
+                        <li>تجنب الرياضة والنشاط الشاق.</li>
+                        <li><strong>اتصل بالطبيب إذا استمر الارتفاع.</strong></li>
+                    </ul>
+                </div>
+                <!-- Low Sugar -->
+                <div class="emergency-box box-low">
+                    <h3><i class="fas fa-arrow-down"></i> هبوط السكر < 70 ملغ/ديسيلتر</h3>
+                    <ul style="list-style-type: square;">
+                        <li>توقف عن النشاط.</li>
+                        <li>تناول 15 غرام كربوهيدرات سريعة (عصير مثلاً).</li>
+                        <li>انتظر 15 دقيقة وأعد الفحص.</li>
+                        <li>كرر الخطوات إذا لزم الأمر.</li>
+                        <li>تناول وجبة خفيفة بعد التحسن.</li>
+                        <li><strong>اتصل بالطوارئ في الحالات الشديدة.</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="two-col" style="margin-top: 40px; background: #eaf2f8; padding: 30px; border-radius: 12px;">
+                <div class="two-col-content">
+                    <h3 style="color: var(--secondary-blue); margin-top: 0;"><i class="fas fa-medkit"></i> قائمة حقيبة طوارئ الطفل</h3>
+                    <p>قائمة لما يجب أن يحمله الطفل دائماً عند الخروج:</p>
+                    <ul>
+                        <li>جهاز قياس السكر وشرائط الفحص.</li>
+                        <li>مصدر سكر سريع (عصير أو مكعبات سكر).</li>
+                        <li>قلم الإنسولين والإبر.</li>
+                        <li>وجبة خفيفة (بسكويت أو فاكهة).</li>
+                        <li>بطاقة هوية طبية (توضح أنه مصاب بالسكري وتضم رقم ولي الأمر).</li>
+                    </ul>
+                </div>
+                <img src="standing-boy.png" alt="حقيبة الطفل">
+            </div>
+        </div>
+
+        <!-- Section 4: Psych & School -->
+        <div id="psychological" class="section-card reveal">
+            <h2>الدعم النفسي والبيئة المدرسية</h2>
+            
+            <div class="two-col" style="margin-bottom: 40px;">
+                <div class="two-col-content">
+                    <h3 style="color: var(--primary-orange);"><i class="fas fa-heart"></i> الدعم النفسي للطفل</h3>
+                    <ul class="custom-list">
+                        <li><strong>تجنب اللوم:</strong> تذبذب القراءات ليس ذنب الطفل؛ ابحث عن السبب وعالجه بهدوء.</li>
+                        <li><strong>لا للقيود:</strong> ذكّره دائماً بقدرته على اللعب، الرياضة، والتفوق كغيره من الأطفال.</li>
+                        <li><strong>تعزيز الاستقلالية:</strong> درّبه تدريجياً على فحص السكر بنفسه لبناء ثقته وتقليل خوفه.</li>
+                        <li><strong>التعامل مع الأصدقاء:</strong> علّمه الإجابة ببساطة وثقة عن أي أسئلة تخص جهازه.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-col-content" style="background: #fdf2e9; padding: 30px; border-radius: 12px; border-right: 5px solid var(--primary-orange);">
+                <h3 style="color: var(--primary-orange); margin-top: 0;"><i class="fas fa-school"></i> السكري والمدرسة</h3>
+                <ul>
+                    <li><strong>التواصل الفعال:</strong> أبلغ الإدارة والمعلمين بحالة الطفل واشرح لهم أعراض الهبوط بوضوح.</li>
+                    <li><strong>حقوق أساسية في الصف:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت.</li>
+                    <li><strong>صندوق الطوارئ:</strong> جهّز علبة تُترك في الإدارة أو مع المعلم تحتوي على عصير، سكر سريع، وجهاز فحص إضافي.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>مستشفى النسائية والأطفال المفرق - قسم التمريض / شعبة ICU</p>
+        <p style="font-size: 0.9rem; color: #dcdde1; margin-top: 5px;">مع تمنياتنا لكم ولأطفالكم بدوام الصحة والعافية</p>
+    </footer>
+
+    <script>
+        // Animation on Scroll
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 100; // Adjusted for earlier reveal
+                if(revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Trigger once on load
+    </script>
+
+</body>
+</html>
