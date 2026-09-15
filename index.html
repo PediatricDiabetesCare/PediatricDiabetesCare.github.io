@@ -7,26 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 
-/* ============ رموز التصميم ============ */
+/* ============ رموز التصميم بالألوان الجديدة ============ */
 :root{
-  --cream:#FFF8EF;
+  --cream:#fcf9f6; /* خلفية أصفى وأنقى */
   --paper:#FFFFFF;
-  --orange:#FF7A18;
-  --orange-deep:#B84A0F;
-  --orange-soft:#FFE3C0;
-  --orange-softer:#FFF1DE;
+  --orange:#eb6d2b; /* كود اللون تبعك */
+  --orange-deep:#eb6d2b; /* تم توحيده لإلغاء أي درجة بني */
+  --orange-hover:#cf5e22; /* لون أغمق بنسبة بسيطة جداً لتأثيرات المرور بالماوس */
+  --orange-soft:#fbd9c8;
+  --orange-softer:#fef3ed;
   --red:#E0483C;
   --red-deep:#B4291F;
   --gold:#F0A202;
   --gold-deep:#C77E00;
-  --ink:#3A2A1D;
-  --ink-soft:#6B5744;
-  --line:#F0D6B0;
+  --ink:#2c3e50; /* تم التغيير من البني الغامق إلى سكني داكن احترافي للنصوص */
+  --ink-soft:#596b7d;
+  --line:#f2e6de;
 }
 
 *{box-sizing:border-box;}
 
-/* إزالة overflow-x:hidden من هنا لتفعيل الثبات (sticky) */
+/* إزالة overflow-x:hidden لتفعيل الثبات (sticky) */
 html{scroll-behavior:smooth;}
 
 body{
@@ -53,7 +54,7 @@ img{display:block;max-width:100%;}
 
 /* ============ الشريط العلوي ============ */
 .top-bar{
-  background:var(--orange-deep); /* برتقالي غامق بدلاً من البني */
+  background:var(--orange-deep);
   color:#FFFFFF;
   text-align:center;
   padding:10px 16px;
@@ -61,7 +62,7 @@ img{display:block;max-width:100%;}
   font-weight:700;
   letter-spacing:.2px;
 }
-.top-bar .ico{margin-inline-start:8px;color:var(--orange-soft);}
+.top-bar .ico{margin-inline-start:8px;color:var(--orange-softer);}
 
 /* ============ الهيدر ============ */
 header{
@@ -122,7 +123,7 @@ header{
 .hero-text p.lede.accent{color:var(--orange);}
 
 .mascot-wrap{width:170px;flex-shrink:0;}
-.mascot-wrap img{width:100%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(184,74,15,.22));}
+.mascot-wrap img{width:100%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(235,109,43,.22));}
 
 /* حركة واحدة عند التحميل فقط */
 .hero-anim{opacity:0; transform:translateY(16px); animation:riseIn .7s ease forwards;}
@@ -134,7 +135,7 @@ header{
 .mascot-bounce{animation:bounceIn .9s cubic-bezier(.34,1.56,.64,1) forwards; opacity:0; transform:scale(.7);}
 @keyframes bounceIn{to{opacity:1; transform:scale(1);}}
 
-/* ============ التنقل (تم إخراجه من الهيدر وتثبيته) ============ */
+/* ============ التنقل (ثابتة مع حجم مثالي) ============ */
 nav.pagenav{
   display:flex;
   justify-content:center;
@@ -145,23 +146,24 @@ nav.pagenav{
   top: 0;
   z-index: 1000;
   background: var(--cream);
-  box-shadow: 0 4px 15px rgba(255, 122, 24, 0.1);
+  box-shadow: 0 4px 15px rgba(235, 109, 43, 0.1);
   border-bottom: 2px solid var(--orange-soft);
 }
 nav.pagenav a{
   text-decoration:none;
   color:var(--orange-deep);
-  font-weight:900; /* تعريض الخط */
-  font-size:1.05rem; /* تكبير الخط */
-  padding:10px 18px; /* تكبير مساحة الزر */
+  font-weight:900; 
+  font-size:1.05rem; 
+  padding:10px 18px; 
   border-bottom:3px solid transparent;
   transition:all .2s;
   white-space:nowrap;
   border-radius: 8px;
 }
 nav.pagenav a:hover, nav.pagenav a:focus-visible{
-  border-color:var(--orange);
+  border-color:var(--orange-hover);
   background: var(--orange-softer);
+  color:var(--orange-hover);
 }
 nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset:2px;}
 
@@ -193,7 +195,7 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   justify-content:center;
 }
 .definition-grid .fig{width:190px; flex-shrink:0;}
-.definition-grid .fig img{filter:drop-shadow(0 14px 18px rgba(184,74,15,.18));}
+.definition-grid .fig img{filter:drop-shadow(0 14px 18px rgba(235,109,43,.18));}
 .definition-grid .content{flex-grow:1; min-width:260px;}
 .definition-grid p{font-size:1.08rem;}
 
@@ -219,14 +221,14 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   .definition-grid .fig{width:150px;}
 }
 
-/* ============ قسم: أركان الرعاية (تصميم منسدل آمن للجوال) ============ */
+/* ============ قسم: أركان الرعاية ============ */
 .pillars-flow{max-width:620px; margin:0 auto; text-align:center;}
 .pillars-hub{
   width:88px; height:88px; border-radius:50%;
   background:var(--orange);
   display:flex; align-items:center; justify-content:center;
   color:#fff; margin:0 auto;
-  box-shadow:0 8px 20px rgba(255,122,24,.35);
+  box-shadow:0 8px 20px rgba(235,109,43,.35);
 }
 .pillars-hub .ico{font-size:1.9rem;}
 .pillars-stem{width:2px; height:26px; background:var(--orange-soft); margin:0 auto;}
@@ -321,7 +323,7 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   padding:26px;
 }
 .bag-ticket-inner{display:flex; align-items:center; gap:28px; flex-wrap:wrap; justify-content:center;}
-.bag-ticket-img{width:130px; flex-shrink:0; filter:drop-shadow(0 14px 18px rgba(184,74,15,.18));}
+.bag-ticket-img{width:130px; flex-shrink:0; filter:drop-shadow(0 14px 18px rgba(235,109,43,.18));}
 .bag-ticket-text{flex-grow:1; min-width:240px;}
 .bag-ticket-head{display:flex; align-items:center; gap:12px; justify-content:flex-start; margin-bottom:12px;}
 .bag-ticket-head .ico{font-size:1.4rem; color:var(--orange-deep);}
@@ -379,10 +381,10 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
 
 /* ============ التذييل ============ */
 footer{
-  background:var(--orange-deep); /* برتقالي غامق متناسق */
+  background:var(--orange-deep);
   color:#FFFFFF;
   text-align:center;
-  padding:34px 20px; /* تم التعديل لتلائم إزالة النص السفلي */
+  padding:34px 20px;
   border-radius:32px 32px 0 0;
   margin-top:16px;
 }
@@ -437,7 +439,7 @@ footer p.wish{margin:0; font-size:1.08rem; font-weight:800;}
   </div>
 </header>
 
-<!-- القائمة تم نقلها خارج الهيدر لكي تثبت عند النزول -->
+<!-- القائمة ثابتة في الأعلى وخارج الهيدر -->
 <nav class="pagenav" aria-label="روابط الصفحة">
   <a href="#definition">ما هو السكري؟</a>
   <a href="#pillars">أركان الرعاية</a>
