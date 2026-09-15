@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دليلكم المبسط لفهم سكري الأطفال</title>
+<title>دليلكم المبسط لفهم ربو الأطفال</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 
@@ -67,7 +67,7 @@ img{display:block;max-width:100%;}
 header{
   position:relative;
   background:linear-gradient(180deg, var(--orange-softer) 0%, var(--cream) 100%);
-  padding:26px 0 30px 0; /* تم تعديل المسافة السفلية هنا */
+  padding:26px 0 0 0;
   overflow:hidden;
 }
 
@@ -97,7 +97,7 @@ header{
   align-items:center;
   justify-content:center;
   gap:32px;
-  padding:10px 20px 20px 20px;
+  padding:10px 20px 56px 20px;
   max-width:1080px;
   margin:0 auto;
   flex-wrap:wrap;
@@ -134,34 +134,33 @@ header{
 .mascot-bounce{animation:bounceIn .9s cubic-bezier(.34,1.56,.64,1) forwards; opacity:0; transform:scale(.7);}
 @keyframes bounceIn{to{opacity:1; transform:scale(1);}}
 
-/* ============ التنقل (القائمة الثابتة) ============ */
+/* ============ التنقل (تم التعديل لتكون ثابتة وتكبير الأزرار) ============ */
 nav.pagenav{
-  position: sticky; /* يثبت القائمة */
-  top: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95); /* خلفية شبه شفافة */
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(184,74,15,0.1);
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:10px;
+  gap:10px 8px;
   padding:15px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--cream);
+  box-shadow: 0 4px 15px rgba(184,74,15,0.08);
   border-bottom: 2px solid var(--orange-soft);
 }
 nav.pagenav a{
   text-decoration:none;
   color:var(--orange-deep);
-  font-weight:800;
+  font-weight:900; /* تعريض الخط أكثر */
   font-size:1.05rem; /* تكبير الخط */
-  padding:8px 16px;
+  padding:10px 18px; /* تكبير مساحة الزر */
   border-bottom:3px solid transparent;
   transition:all .2s;
   white-space:nowrap;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
 }
 nav.pagenav a:hover, nav.pagenav a:focus-visible{
-  border-color:var(--orange);
+  border-color:var(--orange); 
   background: var(--orange-softer);
 }
 nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset:2px;}
@@ -185,7 +184,7 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   color:var(--ink);
 }
 
-/* ============ قسم: ما هو السكري ============ */
+/* ============ قسم: ما هو الربو ============ */
 .definition-grid{
   display:flex;
   gap:36px;
@@ -220,8 +219,8 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   .definition-grid .fig{width:150px;}
 }
 
-/* ============ قسم: أركان الرعاية (تصميم منسدل آمن للجوال) ============ */
-.pillars-flow{max-width:620px; margin:0 auto; text-align:center;}
+/* ============ قسم: ركائز السيطرة ============ */
+.pillars-flow{max-width:750px; margin:0 auto; text-align:center;}
 .pillars-hub{
   width:88px; height:88px; border-radius:50%;
   background:var(--orange);
@@ -237,21 +236,20 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   grid-template-columns:repeat(4, 1fr);
   gap:16px;
 }
-@media (max-width:640px){
-  .pillars-items{grid-template-columns:repeat(2, 1fr); max-width:360px; margin:0 auto;}
+@media (max-width:768px){
+  .pillars-items{grid-template-columns:repeat(2, 1fr); max-width:400px; margin:0 auto;}
 }
 
-.pillar-node{text-align:center;}
-.pillar-node .tick{width:2px; height:14px; background:var(--orange-soft); margin:0 auto;}
+.pillar-node{text-align:center; background:var(--paper); padding:15px; border-radius:16px; border:2px solid var(--orange-soft);}
 .pillar-node .icon{
   width:64px;height:64px;border-radius:50%;
-  background:var(--paper);
-  border:3px solid var(--orange);
+  background:var(--orange-softer);
   display:flex;align-items:center;justify-content:center;
-  margin:0 auto 8px auto;
+  margin:0 auto 12px auto;
 }
 .pillar-node .icon .ico{font-size:1.4rem;color:var(--orange-deep);}
-.pillar-node h4{margin:0;font-size:.95rem;font-weight:800;}
+.pillar-node h4{margin:0 0 8px 0;font-size:1rem;font-weight:900; color:var(--orange-deep);}
+.pillar-node p{margin:0; font-size:0.85rem; line-height:1.6; font-weight:600;}
 
 /* ============ قسم: دليل الطوارئ ============ */
 .emergency-intro{
@@ -275,7 +273,7 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   grid-template-columns:1fr 1fr;
   gap:22px;
 }
-@media (max-width:700px){.emergency-grid{grid-template-columns:1fr;}}
+@media (max-width:768px){.emergency-grid{grid-template-columns:1fr;}}
 
 .emergency-panel{background:var(--paper); border-radius:0 0 20px 20px; overflow:hidden; border:1px solid var(--line);}
 .panel-ribbon{
@@ -287,19 +285,28 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
 .panel-high .panel-ribbon{background:linear-gradient(135deg,var(--red),var(--red-deep));}
 .panel-low .panel-ribbon{background:linear-gradient(135deg,var(--gold),var(--gold-deep));}
 .panel-ribbon .value{
-  direction:ltr; display:inline-block;
+  display:inline-block;
   font-weight:900; font-size:1.15rem;
 }
 .panel-ribbon .label{display:block; font-weight:800; margin-top:4px; font-size:1rem;}
 
-.panel-steps{list-style:none; margin:0; padding:20px 18px 24px 18px; counter-reset:step;}
+.panel-section-title{
+    margin: 15px 18px 5px 18px;
+    font-weight: 900;
+    color: var(--ink);
+    font-size: 1.05rem;
+    border-bottom: 2px dashed var(--orange-soft);
+    padding-bottom: 5px;
+}
+
+.panel-steps{list-style:none; margin:0; padding:10px 18px 20px 18px; counter-reset:step;}
 .panel-steps li{
   counter-increment:step;
   display:flex; align-items:flex-start; gap:12px;
-  margin-bottom:14px; font-weight:600; font-size:1rem;
+  margin-bottom:14px; font-weight:600; font-size:.95rem;
 }
 .panel-steps li:last-child{margin-bottom:0;}
-.panel-steps li::before{
+.panel-steps.numbered li::before{
   content:counter(step);
   flex-shrink:0;
   width:24px;height:24px;border-radius:50%;
@@ -307,9 +314,17 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
   font-weight:900; font-size:.85rem; color:#fff;
   margin-top:2px;
 }
-.panel-high .panel-steps li::before{background:var(--red);}
-.panel-low .panel-steps li::before{background:var(--gold-deep);}
-.panel-steps li.call::before{background:var(--ink);}
+.panel-steps.bulleted li::before{
+  content:"•";
+  flex-shrink:0;
+  width:24px;height:24px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900; font-size:1.5rem; color:var(--orange-deep);
+  margin-top:-2px;
+}
+.panel-high .panel-steps.numbered li::before{background:var(--red);}
+.panel-low .panel-steps.numbered li::before{background:var(--gold-deep);}
+.panel-steps.numbered li.call::before{background:var(--ink);}
 
 /* حقيبة الطوارئ */
 .bag-ticket{
@@ -383,18 +398,17 @@ footer{
   background:var(--ink);
   color:#FFEFDD;
   text-align:center;
-  padding:34px 20px 26px 20px;
+  padding:34px 20px 34px 20px;
   border-radius:32px 32px 0 0;
   margin-top:16px;
 }
 footer p.wish{margin:0; font-size:1.08rem; font-weight:800;}
-footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
 
 </style>
 </head>
 <body>
 
-<!-- مكتبة الأيقونات -->
+<!-- مكتبة الأيقونات (SVG مضمّنة) -->
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 <defs>
 <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M4 21V6a1 1 0 0 1 1-1h5V3h4v2h5a1 1 0 0 1 1 1v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4M10 10h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
@@ -429,63 +443,64 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
 
   <div class="hero">
     <div class="hero-text">
-      <h1 class="hero-anim d1">دليلكم المبسط لفهم سكري الأطفال</h1>
-      <p class="lede hero-anim d2">خطوتكم الأولى نحو رعاية آمنة وحياة طبيعية</p>
-      <p class="lede accent hero-anim d3">لأن وعيكم هو أمانهم</p>
+      <h1 class="hero-anim d1">دليلكم المبسط لفهم ربو الأطفال</h1>
+      <p class="lede hero-anim d2">نحو بيئة صحية ونفس مرتاح</p>
+      <p class="lede accent hero-anim d3">لأن وعيهم هو أمانهم</p>
     </div>
     <div class="mascot-wrap mascot-bounce">
-      <img src="cover-kids.png" alt="أطفال السكري">
+      <img src="cover-asthma.png" alt="أطفال الربو">
     </div>
   </div>
-</header>
 
-<!-- القائمة تم نقلها لخارج الهيدر لضمان عمل الثبات -->
-<nav class="pagenav" aria-label="روابط الصفحة">
-  <a href="#definition">ما هو السكري؟</a>
-  <a href="#pillars">أركان الرعاية</a>
-  <a href="#emergency">دليل الطوارئ</a>
-  <a href="#psychological">المدرسة والدعم</a>
-</nav>
+  <!-- القائمة الثابتة بالخط الكبير -->
+  <nav class="pagenav" aria-label="روابط الصفحة">
+    <a href="#definition">ما هو الربو؟</a>
+    <a href="#pillars">ركائز السيطرة</a>
+    <a href="#emergency">دليل الطوارئ</a>
+    <a href="#psychological">المدرسة والدعم</a>
+  </nav>
+</header>
 
 <div class="container">
 
-  <!-- ما هو السكري -->
+  <!-- ما هو الربو -->
   <section id="definition" class="section">
     <div class="section-head">
       <span class="eyebrow">فهم الحالة</span>
-      <h2>ما هو السكري؟ وكيف نكتشفه؟</h2>
+      <h2>ما هو الربو؟ وكيف نكتشفه؟</h2>
     </div>
 
     <div class="definition-grid">
       <div class="fig">
-        <img src="happy-boy.png" alt="طفل نشيط">
+        <img src="cough-boy.png" alt="أعراض الربو">
       </div>
       <div class="content">
-        <p>يحتاج الجسم إلى السكر للطاقة، والإنسولين هو "المفتاح" الذي يُدخل السكر للخلايا. في سكري الأطفال (النوع الأول)، يتوقف البنكرياس عن إنتاج الإنسولين، مما يؤدي لتراكم السكر في الدم.</p>
+        <p>هو مرض مزمن يصيب الجهاز التنفسي، يؤدي لانتفاخ وضيق الشعب الهوائية وزيادة الإفرازات المخاطية، مما يعيق مرور الهواء وصعوبة في التنفس.</p>
 
+        <h4 style="margin:20px 0 5px 0; color:var(--orange-deep);">علامات تنبيهية:</h4>
         <div class="signs-row">
           <div class="sign-chip">
-            <svg class="ico"><use href="#i-scale"></use></svg>
-            <span>فقدان غير مبرر للوزن</span>
+            <span>سعال مستمر (خاصة في الليل أو الصباح الباكر).</span>
           </div>
           <div class="sign-chip">
-            <svg class="ico"><use href="#i-drop"></use></svg>
-            <span>العطش الشديد</span>
+            <span>صفير أو أزيز عند الزفير (صوت "وشوشة" بالصدر).</span>
           </div>
           <div class="sign-chip">
-            <svg class="ico"><use href="#i-toilet"></use></svg>
-            <span>التبول المتكرر</span>
+            <span>ضيق شديد وتنفس سريع.</span>
+          </div>
+          <div class="sign-chip">
+            <span>شعور بضغط أو آلام في الصدر.</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- أركان الرعاية -->
+  <!-- ركائز السيطرة -->
   <section id="pillars" class="section">
     <div class="section-head">
-      <span class="eyebrow">الروتين اليومي</span>
-      <h2>أركان الرعاية الأربعة</h2>
+      <span class="eyebrow">الخطة الوقائية</span>
+      <h2>ركائز السيطرة على الربو</h2>
     </div>
 
     <div class="pillars-flow">
@@ -496,24 +511,24 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
 
       <div class="pillars-items">
         <div class="pillar-node">
-          <div class="tick" aria-hidden="true"></div>
-          <div class="icon"><svg class="ico"><use href="#i-syringe"></use></svg></div>
-          <h4>حقن الأنسولين</h4>
+          <div class="icon"><svg class="ico"><use href="#i-medkit"></use></svg></div>
+          <h4>البخاخ الوقائي</h4>
+          <p>الالتزام التام بأخذه يومياً حسب وصفة الطبيب، حتى في الأيام التي لا يشعر فيها الطفل بأعراض.</p>
         </div>
         <div class="pillar-node">
-          <div class="tick" aria-hidden="true"></div>
           <div class="icon"><svg class="ico"><use href="#i-drop"></use></svg></div>
-          <h4>قياس السكر</h4>
+          <h4>أنبوب المباعدة</h4>
+          <p>استخدامه دائماً مع البخاخ لضمان وصول الجرعة كاملة للرئتين وليس للفم.</p>
         </div>
         <div class="pillar-node">
-          <div class="tick" aria-hidden="true"></div>
-          <div class="icon"><svg class="ico"><use href="#i-apple"></use></svg></div>
-          <h4>الغذاء المتوازن</h4>
+          <div class="icon"><svg class="ico"><use href="#i-scale"></use></svg></div>
+          <h4>تجنب المحفزات</h4>
+          <p>تحديد وتجنب مسببات الحساسية (مثل: التدخين، الغبار، العطور القوية، الحيوانات الأليفة، والالتهابات الفيروسية).</p>
         </div>
         <div class="pillar-node">
-          <div class="tick" aria-hidden="true"></div>
           <div class="icon"><svg class="ico"><use href="#i-run"></use></svg></div>
           <h4>النشاط البدني</h4>
+          <p>شجع طفلك على الرياضة الآمنة، واستخدم البخاخ الإسعافي قبل الجهد إذا لزم الأمر.</p>
         </div>
       </div>
     </div>
@@ -523,61 +538,65 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
   <section id="emergency" class="section">
     <div class="section-head">
       <span class="eyebrow">عند الحاجة</span>
-      <h2>دليل الطوارئ السريع</h2>
+      <h2>دليل الطوارئ للتعامل مع نوبة الربو</h2>
     </div>
 
     <div class="emergency-intro">
       <div class="fork"><svg class="ico"><use href="#i-drop"></use></svg></div>
-      <p>افحص مستوى السكر أولاً، ثم اتبع الخطوات المناسبة</p>
+      <p>راقب العلامات جيداً، ثم اتبع الإجراء السريع المناسب</p>
     </div>
 
     <div class="emergency-grid">
-      <div class="emergency-panel panel-high">
+      <!-- نوبة خفيفة إلى متوسطة -->
+      <div class="emergency-panel panel-low">
         <div class="panel-ribbon">
-          <svg class="ico"><use href="#i-arrow-up"></use></svg>
-          <span class="label">ارتفاع السكر</span>
-          <span class="value">أكثر من 250 ملغ/ديسيلتر</span>
+          <span class="value">نوبة خفيفة إلى متوسطة</span>
         </div>
-        <ol class="panel-steps">
-          <li>افحص الكيتونات</li>
-          <li>الشرب الكثير من الماء</li>
-          <li>أخذ جرعة إنسولين تصحيحية</li>
-          <li>تجنب الرياضة والنشاط الشاق</li>
-          <li class="call">اتصل بالطبيب إذا استمر الارتفاع</li>
+        <div class="panel-section-title">العلامات:</div>
+        <ul class="panel-steps bulleted">
+          <li>سعال مستمر أو صفير خفيف بالصدر.</li>
+          <li>الطفل قادر على التحدث بجمل كاملة.</li>
+        </ul>
+        <div class="panel-section-title">الإجراء السريع:</div>
+        <ol class="panel-steps numbered">
+          <li>إجلاس الطفل بوضعية مستقيمة وتهدئته.</li>
+          <li>إعطاء 2 إلى 4 بخات من البخاخ الإسعافي (الأزرق) باستخدام أنبوب المباعدة.</li>
+          <li>الانتظار 15 دقيقة؛ إذا تحسن يمكنه إكمال يومه.</li>
         </ol>
       </div>
 
-      <div class="emergency-panel panel-low">
+      <!-- نوبة شديدة وطارئة -->
+      <div class="emergency-panel panel-high">
         <div class="panel-ribbon">
-          <svg class="ico"><use href="#i-arrow-down"></use></svg>
-          <span class="label">هبوط السكر</span>
-          <span class="value">أقل من 70 ملغ/ديسيلتر</span>
+          <span class="value">نوبة شديدة وطارئة</span>
         </div>
-        <ol class="panel-steps">
-          <li>توقف عن النشاط</li>
-          <li>تناول 15 غرام كربوهيدرات سريعة</li>
-          <li>انتظر 15 دقيقة وأعد الفحص</li>
-          <li>كرر الخطوات إذا لزم الأمر</li>
-          <li>تناول وجبة خفيفة بعد التحسن</li>
-          <li class="call">اتصل بالطوارئ في الحالات الشديدة</li>
+        <div class="panel-section-title">العلامات:</div>
+        <ul class="panel-steps bulleted">
+          <li>صعوبة شديدة في التنفس وعدم القدرة على الكلام.</li>
+          <li>ازرقاق الشفاه أو انخساف الجلد بين الأضلاع.</li>
+        </ul>
+        <div class="panel-section-title">الإجراء السريع:</div>
+        <ol class="panel-steps numbered">
+          <li class="call">توجه فوراً للطوارئ أو اتصل بالإسعاف.</li>
+          <li>استمر في إعطاء بخة إسعافية كل 30 إلى 60 ثانية (حتى 10 بخات) لحين وصول المساعدة.</li>
         </ol>
       </div>
     </div>
 
+    <!-- حقيبة الخروج -->
     <div class="bag-ticket">
       <div class="bag-ticket-inner">
         <div class="bag-ticket-text">
           <div class="bag-ticket-head">
             <svg class="ico"><use href="#i-medkit"></use></svg>
-            <h3>قائمة حقيبة طوارئ الطفل</h3>
+            <h3>قائمة حقيبة خروج الطفل</h3>
           </div>
-          <p class="intro">لما يجب أن يحمله الطفل دائماً عند الخروج:</p>
+          <p class="intro">تأكد من وجود هذه الأشياء دائماً مع الطفل:</p>
           <ul class="bag-list">
-            <li><svg class="ico"><use href="#i-caret-left"></use></svg> جهاز قياس السكر وشرائط الفحص.</li>
-            <li><svg class="ico"><use href="#i-caret-left"></use></svg> مصدر سكر سريع (عصير أو مكعبات سكر).</li>
-            <li><svg class="ico"><use href="#i-caret-left"></use></svg> قلم الإنسولين والإبر.</li>
-            <li><svg class="ico"><use href="#i-caret-left"></use></svg> وجبة خفيفة (بسكويت أو فاكهة).</li>
-            <li><svg class="ico"><use href="#i-caret-left"></use></svg> بطاقة هوية طبية (توضح أنه مصاب بالسكري وتضم رقم ولي الأمر).</li>
+            <li><svg class="ico"><use href="#i-caret-left"></use></svg> بخاخ الربو الإسعافي (موسع القصبات).</li>
+            <li><svg class="ico"><use href="#i-caret-left"></use></svg> أنبوب المباعدة (Spacer) المخصص لعمره.</li>
+            <li><svg class="ico"><use href="#i-caret-left"></use></svg> مناديل مبللة ومعقم يدين (للوقاية من الفيروسات التنفسية).</li>
+            <li><svg class="ico"><use href="#i-caret-left"></use></svg> بطاقة طبية صغيرة تحمل اسم الطفل ورقم هاتف ولي الأمر للطوارئ.</li>
           </ul>
         </div>
         <img src="standing-boy.png" alt="حقيبة الطفل" class="bag-ticket-img">
@@ -585,38 +604,41 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
     </div>
   </section>
 
-  <!-- الدعم النفسي والمدرسة -->
+  <!-- الدعم النفسي والمدرسة وحقائق -->
   <section id="psychological" class="section">
     <div class="section-head">
       <span class="eyebrow">حياة طبيعية</span>
-      <h2>الدعم النفسي والمدرسة</h2>
+      <h2>الدعم النفسي وحقائق تصحح المفاهيم</h2>
     </div>
 
     <div class="notes-grid">
       <div class="note-card">
-        <h4>تجنب اللوم</h4>
-        <p>تذبذب القراءات ليس ذنب الطفل؛ ابحث عن السبب وعالجه بهدوء.</p>
+        <h4>طمأنة الطفل</h4>
+        <p>التوتر والخوف يزيدان من سرعة التنفس وضيقه؛ حافظ على هدوئك أثناء النوبة لتنعكس طمأنينتك على طفلك.</p>
       </div>
       <div class="note-card">
-        <h4>لا للقيود</h4>
-        <p>ذكّره دائماً بقدرته على اللعب، الرياضة، والتفوق كغيره من الأطفال.</p>
+        <h4>الاستقلالية</h4>
+        <p>درّبه تدريجياً وبإشرافك على تركيب أنبوب المباعدة واستخدام البخاخ بنفسه لبناء ثقته وتقليل شعوره بالعجز.</p>
       </div>
       <div class="note-card">
-        <h4>تعزيز الاستقلالية</h4>
-        <p>درّبه تدريجياً على فحص السكر بنفسه لبناء ثقته وتقليل خوفه.</p>
+        <h4>لا يسبب الإدمان</h4>
+        <p>بخاخات الربو علاج آمن جداً وموضعي للرئتين، والطفل لا "يُدمن" عليها كما يُشاع خطأً.</p>
       </div>
       <div class="note-card">
-        <h4>التعامل مع الأصدقاء</h4>
-        <p>علّمه الإجابة ببساطة وثقة عن أي أسئلة تخص جهازه.</p>
+        <h4>الربو ليس معدياً</h4>
+        <p>هو تحسس والتهاب مزمن في القصبات الهوائية، ولا ينتقل بالاختلاط واللعب مع الأطفال الآخرين.</p>
+      </div>
+      <div class="note-card" style="grid-column: 1 / -1;">
+        <h4>الرياضة مسموحة</h4>
+        <p>الربو لا يمنع التفوق الرياضي (العديد من الأبطال الأولمبيين مصابون بالربو). السر يكمن في التحكم بالمرض، وأخذ بخاخ موسع القصبات قبل الجهد بـ 15 دقيقة إذا لزم الأمر.</p>
       </div>
     </div>
 
     <div class="school-block">
-      <h3><svg class="ico"><use href="#i-school"></use></svg> السكري والمدرسة</h3>
+      <h3><svg class="ico"><use href="#i-school"></use></svg> الربو في المدرسة</h3>
       <ul class="school-list">
-        <li><svg class="ico"><use href="#i-check"></use></svg> <span><strong>التواصل الفعّال:</strong> أبلغ الإدارة والمعلمين بحالة الطفل واشرح لهم أعراض الهبوط بوضوح.</span></li>
-        <li><svg class="ico"><use href="#i-check"></use></svg> <span><strong>حقوق أساسية في الصف:</strong> السماح للطفل بشرب الماء، استخدام الحمام، وفحص السكر في أي وقت.</span></li>
-        <li><svg class="ico"><use href="#i-check"></use></svg> <span><strong>صندوق الطوارئ:</strong> جهّز علبة تُترك في الإدارة أو مع المعلم تحتوي على عصير، سكر سريع، وجهاز فحص إضافي.</span></li>
+        <li><svg class="ico"><use href="#i-check"></use></svg> <span><strong>التواصل مع المدرسة:</strong> أبلغ الإدارة بمهيجات الربو لدى طفلك، وزودهم ببخاخ إسعافي (أزرق) وأنبوب مباعدة إضافي يُترك في عهدة المعلم أو ممرض المدرسة.</span></li>
+        <li><svg class="ico"><use href="#i-check"></use></svg> <span><strong>حقوق الطفل في الصف:</strong> السماح له باستخدام البخاخ فوراً عند السعال المستمر أو الشعور بضيق في التنفس دون انتظار أو استئذان.</span></li>
       </ul>
     </div>
   </section>
@@ -625,7 +647,6 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
 
 <footer>
   <p class="wish">مع تمنياتنا لكم ولاطفالكم بدوام الصحة والعافية</p>
-  <p class="credit">إعداد طلبة الماجستير: محمد القرعان، سيف الدين غانم، حذيفة المشاقبة | إشراف: أ.د. لؤي طوالبة</p>
 </footer>
 
 </body>
