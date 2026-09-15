@@ -67,7 +67,7 @@ img{display:block;max-width:100%;}
 header{
   position:relative;
   background:linear-gradient(180deg, var(--orange-softer) 0%, var(--cream) 100%);
-  padding:26px 0 0 0;
+  padding:26px 0 30px 0; /* تم تعديل المسافة السفلية هنا */
   overflow:hidden;
 }
 
@@ -97,7 +97,7 @@ header{
   align-items:center;
   justify-content:center;
   gap:32px;
-  padding:10px 20px 56px 20px;
+  padding:10px 20px 20px 20px;
   max-width:1080px;
   margin:0 auto;
   flex-wrap:wrap;
@@ -134,25 +134,36 @@ header{
 .mascot-bounce{animation:bounceIn .9s cubic-bezier(.34,1.56,.64,1) forwards; opacity:0; transform:scale(.7);}
 @keyframes bounceIn{to{opacity:1; transform:scale(1);}}
 
-/* ============ التنقل ============ */
+/* ============ التنقل (القائمة الثابتة) ============ */
 nav.pagenav{
+  position: sticky; /* يثبت القائمة */
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95); /* خلفية شبه شفافة */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(184,74,15,0.1);
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:6px 4px;
-  padding:0 16px 30px 16px;
+  gap:10px;
+  padding:15px 16px;
+  border-bottom: 2px solid var(--orange-soft);
 }
 nav.pagenav a{
   text-decoration:none;
   color:var(--orange-deep);
   font-weight:800;
-  font-size:.92rem;
-  padding:8px 14px;
+  font-size:1.05rem; /* تكبير الخط */
+  padding:8px 16px;
   border-bottom:3px solid transparent;
-  transition:border-color .2s;
+  transition:all .2s;
   white-space:nowrap;
+  border-radius: 8px 8px 0 0;
 }
-nav.pagenav a:hover, nav.pagenav a:focus-visible{border-color:var(--orange);}
+nav.pagenav a:hover, nav.pagenav a:focus-visible{
+  border-color:var(--orange);
+  background: var(--orange-softer);
+}
 nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset:2px;}
 
 /* ============ عناوين الأقسام ============ */
@@ -383,7 +394,7 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
 </head>
 <body>
 
-<!-- مكتبة الأيقونات (SVG مضمّنة بلا اعتماد على أي خط خارجي) -->
+<!-- مكتبة الأيقونات -->
 <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
 <defs>
 <symbol id="i-hospital" viewBox="0 0 24 24"><path d="M4 21V6a1 1 0 0 1 1-1h5V3h4v2h5a1 1 0 0 1 1 1v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4M10 10h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
@@ -426,14 +437,15 @@ footer p.credit{margin-top:12px; font-size:.8rem; opacity:.65;}
       <img src="cover-kids.png" alt="أطفال السكري">
     </div>
   </div>
-
-  <nav class="pagenav" aria-label="روابط الصفحة">
-    <a href="#definition">ما هو السكري؟</a>
-    <a href="#pillars">أركان الرعاية</a>
-    <a href="#emergency">دليل الطوارئ</a>
-    <a href="#psychological">المدرسة والدعم</a>
-  </nav>
 </header>
+
+<!-- القائمة تم نقلها لخارج الهيدر لضمان عمل الثبات -->
+<nav class="pagenav" aria-label="روابط الصفحة">
+  <a href="#definition">ما هو السكري؟</a>
+  <a href="#pillars">أركان الرعاية</a>
+  <a href="#emergency">دليل الطوارئ</a>
+  <a href="#psychological">المدرسة والدعم</a>
+</nav>
 
 <div class="container">
 
