@@ -26,7 +26,8 @@
 
 *{box-sizing:border-box;}
 
-html{scroll-behavior:smooth; overflow-x:hidden;}
+/* إزالة overflow-x:hidden من هنا لتفعيل الثبات (sticky) */
+html{scroll-behavior:smooth;}
 
 body{
   margin:0;
@@ -35,7 +36,6 @@ body{
   color:var(--ink);
   line-height:1.75;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
   width:100%;
 }
 
@@ -53,7 +53,7 @@ img{display:block;max-width:100%;}
 
 /* ============ الشريط العلوي ============ */
 .top-bar{
-  background:var(--orange-deep); /* تم التعديل لبرتقالي أكثر */
+  background:var(--orange-deep); /* برتقالي غامق بدلاً من البني */
   color:#FFFFFF;
   text-align:center;
   padding:10px 16px;
@@ -97,7 +97,7 @@ header{
   align-items:center;
   justify-content:center;
   gap:32px;
-  padding:10px 20px 40px 20px;
+  padding:10px 20px 56px 20px;
   max-width:1080px;
   margin:0 auto;
   flex-wrap:wrap;
@@ -134,7 +134,7 @@ header{
 .mascot-bounce{animation:bounceIn .9s cubic-bezier(.34,1.56,.64,1) forwards; opacity:0; transform:scale(.7);}
 @keyframes bounceIn{to{opacity:1; transform:scale(1);}}
 
-/* ============ التنقل ============ */
+/* ============ التنقل (تم إخراجه من الهيدر وتثبيته) ============ */
 nav.pagenav{
   display:flex;
   justify-content:center;
@@ -153,7 +153,7 @@ nav.pagenav a{
   color:var(--orange-deep);
   font-weight:900; /* تعريض الخط */
   font-size:1.05rem; /* تكبير الخط */
-  padding:10px 18px; /* تكبير الزر */
+  padding:10px 18px; /* تكبير مساحة الزر */
   border-bottom:3px solid transparent;
   transition:all .2s;
   white-space:nowrap;
@@ -379,10 +379,10 @@ nav.pagenav a:focus-visible{outline:2px solid var(--orange-deep); outline-offset
 
 /* ============ التذييل ============ */
 footer{
-  background:var(--orange-deep); /* تم التعديل لبرتقالي أكثر */
+  background:var(--orange-deep); /* برتقالي غامق متناسق */
   color:#FFFFFF;
   text-align:center;
-  padding:34px 20px; /* تم تعديل الحشوة لتلائم إزالة النص السفلي */
+  padding:34px 20px; /* تم التعديل لتلائم إزالة النص السفلي */
   border-radius:32px 32px 0 0;
   margin-top:16px;
 }
@@ -435,14 +435,15 @@ footer p.wish{margin:0; font-size:1.08rem; font-weight:800;}
       <img src="cover-kids.png" alt="أطفال السكري">
     </div>
   </div>
-
-  <nav class="pagenav" aria-label="روابط الصفحة">
-    <a href="#definition">ما هو السكري؟</a>
-    <a href="#pillars">أركان الرعاية</a>
-    <a href="#emergency">دليل الطوارئ</a>
-    <a href="#psychological">المدرسة والدعم</a>
-  </nav>
 </header>
+
+<!-- القائمة تم نقلها خارج الهيدر لكي تثبت عند النزول -->
+<nav class="pagenav" aria-label="روابط الصفحة">
+  <a href="#definition">ما هو السكري؟</a>
+  <a href="#pillars">أركان الرعاية</a>
+  <a href="#emergency">دليل الطوارئ</a>
+  <a href="#psychological">المدرسة والدعم</a>
+</nav>
 
 <div class="container">
 
